@@ -80,10 +80,7 @@ public class BullsAndCows {
             }
         }
         //generate stars
-        StringBuilder stars = new StringBuilder();
-        for (int i = 0; i < secretCode.length(); i++) {
-            stars.append("*");
-        }
+        StringBuilder stars = new StringBuilder("*".repeat(secretCode.length()));
         //print
         if (symbols.length <= 10) {
             System.out.println("The secret is prepared: "+stars+" ("+firstNum+"-"+lastNum+").");
