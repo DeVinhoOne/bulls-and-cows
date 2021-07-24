@@ -58,9 +58,7 @@ public class BullsAndCows {
                 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z'};
         char[] slice = new char[numOfSymbols];
-        for (int i = 0; i < slice.length; i++) {
-            slice[i] = allSymbols[i];
-        }
+        System.arraycopy(allSymbols, 0, slice, 0, slice.length);
         return slice;
     }
 
