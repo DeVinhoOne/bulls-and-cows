@@ -51,22 +51,9 @@ public class UserInterface {
         }
 
         String secretCode = bac.generateSecretCode(codeLength, numOfSymbols);
-        int bulls = 0;
-        int cows;
-        int turn = 1;
-        System.out.println("Okay, let's start a game!");
-        while (bulls != secretCode.length()) {
-            System.out.println("Turn " + turn + ":");
-            System.out.print("> ");
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("quit")) {
-                System.out.println("Exiting the game..");
-                break;
-            }
-            bulls = bac.countBulls(secretCode, input);
-            cows = bac.countCows(secretCode, input);
-            printResult(bulls, cows);
-            turn++;
+        int bulls = checkUserGuesses(secretCode);
+        if (bulls == -1) {
+            return;
         }
         if (bulls == secretCode.length()) {
             System.out.println("Congratulations! You guessed the secret code.");
@@ -88,5 +75,28 @@ public class UserInterface {
 
     private void printWelcomeText() {
         System.out.println("Bulls And Cows - The Game\nYour task is to guess the secret code.\nType quit at any time to exit the game.\nGood luck.\n");
+    }
+
+    private int checkUserGuesses(String secretCode) {
+        Scanner scanner = new Scanner(System.in);
+        BullsAndCows bac = new BullsAndCows();
+        int bulls = 0;
+        int cows;
+        int turn = 1;
+        System.out.println("Okay, let's start a game!");
+        while (bulls != secretCode.length()) {
+            System.out.println("Turn " + turn + ":");
+            System.out.print("> ");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting the game..");
+                return -1;
+            }
+            bulls = bac.countBulls(secretCode, input);
+            cows = bac.countCows(secretCode, input);
+            printResult(bulls, cows);
+            turn++;
+        }
+        return bulls;
     }
 }
