@@ -10,9 +10,13 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         BullsAndCows bac = new BullsAndCows();
         Validator validator = new Validator();
-
+        printWelcomeText();
         System.out.print("Please, enter the secret code's length:\n> ");
         String textCodeLength = scanner.nextLine();
+        if (textCodeLength.equalsIgnoreCase("quit")) {
+            System.out.println("Exiting the game..");
+            return;
+        }
         int codeLength;
         if (validator.ValidateNumberInput(textCodeLength)) {
             codeLength = Integer.parseInt(textCodeLength);
@@ -27,6 +31,10 @@ public class UserInterface {
 
         System.out.print("Input the number of possible symbols in the code:\n> ");
         String textNumOfSymbols = scanner.nextLine();
+        if (textNumOfSymbols.equalsIgnoreCase("quit")) {
+            System.out.println("Exiting the game..");
+            return;
+        }
         int numOfSymbols;
         if (validator.ValidateNumberInput(textNumOfSymbols)) {
             numOfSymbols = Integer.parseInt(textNumOfSymbols);
@@ -51,6 +59,10 @@ public class UserInterface {
             System.out.println("Turn " + turn + ":");
             System.out.print("> ");
             String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting the game..");
+                break;
+            }
             bulls = bac.countBulls(secretCode, input);
             cows = bac.countCows(secretCode, input);
             printResult(bulls, cows);
@@ -72,5 +84,9 @@ public class UserInterface {
         } else if (bulls > 0) {
             System.out.println("Grade: " + bulls + " bull(s).");
         }
+    }
+
+    private void printWelcomeText() {
+        System.out.println("Bulls And Cows - The Game\nYour task is to guess the secret code.\nType quit at any time to exit the game.\nGood luck.\n");
     }
 }
