@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e6031a69-aa80-4763-bafa-b092cb57e214" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BullsAndCows/bullscows/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BullsAndCows/bullscows/UserInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bullscows/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bullscows/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Validator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +20,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="aaa256fc-d653-4012-8ac7-8d637d008a82" />
+        <option name="url" value="https://github.com/DeVinhoOne/bulls-and-cows.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="1vdZFV69LJWCMRPB1y4sqiZBGZd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,6 +72,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -71,6 +86,14 @@
       <option name="presentableId" value="Default" />
       <updated>1626893824220</updated>
     </task>
+    <task id="LOCAL-00001" summary="add easy way to exit the game">
+      <created>1627679588434</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627679588434</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,5 +119,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add easy way to exit the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="add easy way to exit the game" />
   </component>
 </project>
