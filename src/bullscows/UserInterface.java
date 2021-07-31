@@ -16,15 +16,8 @@ public class UserInterface {
             System.out.println("Exiting the game..");
             return;
         }
-        int codeLength;
-        if (validator.ValidateNumberInput(textCodeLength)) {
-            codeLength = Integer.parseInt(textCodeLength);
-        } else {
-            System.out.println("Error: \""+textCodeLength+"\" isn't a valid number.");
-            return;
-        }
-        if (codeLength <= 0) {
-            System.out.println("Error: code length cannot be zero or less.");
+        int codeLength = validator.validateCodeLength(textCodeLength);
+        if (codeLength == -1) {
             return;
         }
 
@@ -34,18 +27,8 @@ public class UserInterface {
             System.out.println("Exiting the game..");
             return;
         }
-        int numOfSymbols;
-        if (validator.ValidateNumberInput(textNumOfSymbols)) {
-            numOfSymbols = Integer.parseInt(textNumOfSymbols);
-        } else {
-            System.out.println("Error: \""+textNumOfSymbols+"\" isn't a valid number.");
-            return;
-        }
-        if (numOfSymbols > 36) {
-            System.out.println("Error: maximum number of possible symbols in the code is 36 (0-9, a-z).");
-            return;
-        } else if (numOfSymbols < codeLength) {
-            System.out.println("Error: it's not possible to generate a code with a length of "+codeLength+" with "+numOfSymbols+" unique symbols.");
+        int numOfSymbols = validator.validateNumOfSymbols(textNumOfSymbols, codeLength);
+        if (numOfSymbols == -1) {
             return;
         }
 
