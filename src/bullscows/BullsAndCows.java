@@ -1,34 +1,31 @@
 package bullscows;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class BullsAndCows {
 
-    public int countBulls(String code, String input) {
+    public int checkUserGuesses(String secretCode) {
+        Scanner scanner = new Scanner(System.in);
+        UserInterface ui = new UserInterface();
         int bulls = 0;
-        char[] codeArr = code.toCharArray();
-        for (int i = 0; i < input.length(); i++) {
-            char currDigit = input.charAt(i);
-            if (currDigit == codeArr[i]) {
-                bulls++;
+        int cows;
+        int turn = 1;
+        System.out.println("Okay, let's start a game!");
+        while (bulls != secretCode.length()) {
+            System.out.println("Turn " + turn + ":");
+            System.out.print("> ");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting the game..");
+                return -1;
             }
+            bulls = this.countBulls(secretCode, input);
+            cows = this.countCows(secretCode, input);
+            ui.printResult(bulls, cows);
+            turn++;
         }
         return bulls;
-    }
-
-    public int countCows(String code, String input) {
-        int cows = 0;
-        for (int i = 0; i < input.length(); i++) {
-            char inputDigit = input.charAt(i);
-            int idx = code.indexOf(inputDigit);
-            if (idx == -1) {
-                continue;
-            }
-            if (idx != i && code.contains(String.valueOf(inputDigit))) {
-                cows++;
-            }
-        }
-        return cows;
     }
 
     public String generateSecretCode(int codeLength, int numOfSymbols) {
@@ -51,6 +48,33 @@ public class BullsAndCows {
         }
         printPreparedCode(res.toString(), symbols);
         return res.toString();
+    }
+
+    private int countBulls(String code, String input) {
+        int bulls = 0;
+        char[] codeArr = code.toCharArray();
+        for (int i = 0; i < input.length(); i++) {
+            char currDigit = input.charAt(i);
+            if (currDigit == codeArr[i]) {
+                bulls++;
+            }
+        }
+        return bulls;
+    }
+
+    private int countCows(String code, String input) {
+        int cows = 0;
+        for (int i = 0; i < input.length(); i++) {
+            char inputDigit = input.charAt(i);
+            int idx = code.indexOf(inputDigit);
+            if (idx == -1) {
+                continue;
+            }
+            if (idx != i && code.contains(String.valueOf(inputDigit))) {
+                cows++;
+            }
+        }
+        return cows;
     }
 
     private char[] generateSymbols(int numOfSymbols) {
