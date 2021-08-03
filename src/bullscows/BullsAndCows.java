@@ -5,6 +5,16 @@ import java.util.Scanner;
 
 public class BullsAndCows {
 
+    private int codeLength;
+    private int numOfSymbols;
+    private int maxNumOfSymbols;
+
+    public BullsAndCows(int codeLength, int numOfSymbols, int maxNumOfSymbols) {
+        this.codeLength = codeLength;
+        this.numOfSymbols = numOfSymbols;
+        this.maxNumOfSymbols = maxNumOfSymbols;
+    }
+
     public int checkUserGuesses(String secretCode) {
         Scanner scanner = new Scanner(System.in);
         UserInterface ui = new UserInterface();
@@ -28,25 +38,25 @@ public class BullsAndCows {
         return bulls;
     }
 
-    public String generateSecretCode(int codeLength, int numOfSymbols) {
+    public String generateSecretCode() {
         StringBuilder res = new StringBuilder();
         Random random = new Random();
-        if (codeLength > 36) {
-            System.out.println("Error: can't generate a secret number with a length of " + codeLength +
+        if (this.codeLength > this.maxNumOfSymbols) {
+            System.out.println("Error: can't generate a secret number with a length of " + this.codeLength +
                     " because there aren't enough unique characters.");
             return "";
         }
-        char[] symbols = generateSymbols(numOfSymbols);
+        char[] symbols = generateSymbols();
 
-        while (res.length() != codeLength) {
-            int randomNumber = random.nextInt(numOfSymbols);
+        while (res.length() != this.codeLength) {
+            int randomNumber = random.nextInt(this.numOfSymbols);
             char currChar = symbols[randomNumber];
             if (res.toString().contains(String.valueOf(currChar))) {
                 continue;
             }
             res.append(currChar);
         }
-        printPreparedCode(res.toString(), symbols);
+        printPreparedCode(symbols);
         return res.toString();
     }
 
@@ -77,16 +87,16 @@ public class BullsAndCows {
         return cows;
     }
 
-    private char[] generateSymbols(int numOfSymbols) {
+    private char[] generateSymbols() {
         char[] allSymbols = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
                 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z'};
-        char[] slice = new char[numOfSymbols];
+        char[] slice = new char[this.numOfSymbols];
         System.arraycopy(allSymbols, 0, slice, 0, slice.length);
         return slice;
     }
 
-    private void printPreparedCode(String secretCode, char[] symbols) {
+    private void printPreparedCode(char[] symbols) {
         String firstNum = "";
         String lastNum = "";
         String firstLetter = "";
@@ -104,7 +114,7 @@ public class BullsAndCows {
             }
         }
         //generate stars
-        StringBuilder stars = new StringBuilder("*".repeat(secretCode.length()));
+        StringBuilder stars = new StringBuilder("*".repeat(this.codeLength));
         //print
         if (symbols.length <= 10) {
             System.out.println("The secret is prepared: "+stars+" ("+firstNum+"-"+lastNum+").");

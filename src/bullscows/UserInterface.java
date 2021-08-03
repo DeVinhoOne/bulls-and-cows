@@ -7,7 +7,6 @@ public class UserInterface {
 
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
-        BullsAndCows bac = new BullsAndCows();
         Validator validator = new Validator();
         printWelcomeText();
         System.out.print("Please, enter the secret code's length:\n> ");
@@ -31,8 +30,8 @@ public class UserInterface {
         if (numOfSymbols == -1) {
             return;
         }
-
-        String secretCode = bac.generateSecretCode(codeLength, numOfSymbols);
+        BullsAndCows bac = new BullsAndCows(codeLength, numOfSymbols, 36);
+        String secretCode = bac.generateSecretCode();
         int bulls = bac.checkUserGuesses(secretCode);
         if (bulls == -1) {
             return;
